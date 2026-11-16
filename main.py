@@ -112,6 +112,7 @@ def update():
             player_score += 1
             reset_ball(-1)
 
+
 def main():
     global player_score, ai_score
 
@@ -122,18 +123,21 @@ def main():
             draw()
             time.sleep(1 / FPS)
 
-    draw()
+        draw()
+        print("\nGAME OVER!")
 
-    print("\n🏆 GAME OVER!")
+        if player_score > ai_score:
+            print("YOU WIN!")
+        else:
+            print("AI WINS!")
 
-    if player_score > ai_score:
-        print("YOU WIN!")
-    else:
-        print("AI WINS!")
+        print(f"FINAL SCORE: {player_score} - {ai_score}")
 
-    print(f"FINAL SCORE: {player_score} - {ai_score}")
+    except KeyboardInterrupt:
+        print("\nGame interrupted.")
 
-    input("\nPress Enter to exit...")
-
+    finally:
+        print("\nThanks for playing!")
+        
 if __name__ == "__main__":
     main()
